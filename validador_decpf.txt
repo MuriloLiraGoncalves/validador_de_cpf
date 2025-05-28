@@ -1,0 +1,110 @@
+#include <stdio.h>
+
+
+int funcao(int cpf1, int cpf2, int cpf3, int cpf4, int cpf5, int cpf6, int cpf7, int cpf8, int cpf9) {
+    int R1 = cpf1 * 10;	
+    int R2 = cpf2 * 9;
+    int R3 = cpf3 * 8;
+    int R4 = cpf4 * 7;
+    int R5 = cpf5 * 6;
+    int R6 = cpf6 * 5;
+    int R7 = cpf7 * 4;
+    int R8 = cpf8 * 3;
+    int R9 = cpf9 * 2;
+    int soma = R1 + R2 + R3 + R4 + R5 + R6 + R7 + R8 + R9;
+    int resto = soma % 11;
+    int primeiroDigito;
+    
+    if (resto < 2){
+        primeiroDigito = 0;
+    } else {
+        primeiroDigito = 11 - resto;
+    }
+
+    printf("\nPrimeiro digito verificador: %d\n", primeiroDigito);
+    
+    return primeiroDigito;
+}
+
+int funcao_2(int cpf1, int cpf2, int cpf3, int cpf4, int cpf5, int cpf6, int cpf7, int cpf8, int cpf9, int primeiroDigito) {
+    int S1, S2, S3, S4, S5, S6, S7, S8, S9, S10;
+    S1 = cpf1 * 11;
+    S2 = cpf2 * 10;
+    S3 = cpf3 * 9;
+    S4 = cpf4 * 8;
+    S5 = cpf5 * 7;
+    S6 = cpf6 * 6;
+    S7 = cpf7 * 5;
+    S8 = cpf8 * 4;
+    S9 = cpf9 * 3;
+    S10 = primeiroDigito * 2;
+
+    int soma_2, resto_2, segundoDigito;
+    soma_2 = S1 + S2 + S3 + S4 + S5 + S6 + S7 + S8 + S9 + S10;
+    resto_2 = soma_2 % 11;
+
+    if (resto_2 < 2){
+        segundoDigito = 0;
+    }
+    if (resto_2 >= 2){
+        segundoDigito = 11 - resto_2;
+    }
+
+    printf("Segundo digito verificador: %d\n", segundoDigito);
+
+    // Exibindo CPF completo
+    printf("\nCPF completo: %d%d%d.%d%d%d.%d%d%d-%d%d\3n",
+           cpf1, cpf2, cpf3,
+           cpf4, cpf5, cpf6,
+           cpf7, cpf8, cpf9,
+           primeiroDigito, segundoDigito);
+           
+    return segundoDigito;
+}
+
+int main(){
+    int cpf1, cpf2, cpf3, cpf4, cpf5, cpf6, cpf7, cpf8, cpf9;
+    int r, s;
+
+    // Entrada dos 9 primeiros dígitos
+    printf("Digite o primeiro numero do CPF: ");
+    scanf("%d", &cpf1);
+    //R1 = cpf1 * 10;
+
+    printf("Digite o segundo numero do CPF: ");
+    scanf("%d", &cpf2);
+    //R2 = cpf2 * 9;
+
+    printf("Digite o terceiro numero do CPF: ");
+    scanf("%d", &cpf3);
+    //R3 = cpf3 * 8;
+
+    printf("Digite o quarto numero do CPF: ");
+    scanf("%d", &cpf4);
+    //R4 = cpf4 * 7;
+
+    printf("Digite o quinto numero do CPF: ");
+    scanf("%d", &cpf5);
+    //R5 = cpf5 * 6;
+
+    printf("Digite o sexto numero do CPF: ");
+    scanf("%d", &cpf6);
+    //R6 = cpf6 * 5;
+
+    printf("Digite o setimo numero do CPF: ");
+    scanf("%d", &cpf7);
+    //R7 = cpf7 * 4;
+
+    printf("Digite o oitavo numero do CPF: ");
+    scanf("%d", &cpf8);
+    //R8 = cpf8 * 3;
+
+    printf("Digite o nono numero do CPF: ");
+    scanf("%d", &cpf9);
+    //R9 = cpf9 * 2;
+
+    r = funcao(cpf1, cpf2, cpf3, cpf4, cpf5, cpf6, cpf7, cpf8, cpf9);
+    s = funcao_2(cpf1, cpf2, cpf3, cpf4, cpf5, cpf6, cpf7, cpf8, cpf9, r);
+
+    return 0;
+}
